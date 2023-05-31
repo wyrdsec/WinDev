@@ -89,6 +89,8 @@ if( -not (Test-CommandExists "winget") ) {
 
 Update-Environment-Path
 
+Write-Output "Installing Winget Packages"
+
 # winget programs
 Install-Program -ProgramName Mozilla.firefox
 Install-Program -ProgramName Git.Git
@@ -101,6 +103,9 @@ Install-Program -ProgramName ojdkbuild.openjdk.11.jdk
 Install-Program -ProgramName Notepad++.Notepad++
 Install-Program -ProgramName WiresharkFoundation.Wireshark
 
+
+Write-Output "Installing MSStore Packages"
+
 # MS STORE id's
 # Windbg: 9PGJGD53TN86
 # Sysinternals: 9P7KNL5RWT25
@@ -110,6 +115,8 @@ Install-Program -ProgramName 9P7KNL5RWT25
 Update-Environment-Path
 
 # Other programs not on winget
+
+Write-Output "Installing Ghidra"
 
 $URL = "https://api.github.com/repos/NationalSecurityAgency/ghidra/releases/latest"
 $URL = (Invoke-WebRequest -UseBasicParsing -Uri $URL).Content | ConvertFrom-Json |
@@ -121,6 +128,7 @@ Invoke-WebRequest -Uri $URL -OutFile $env:USERPROFILE'\Downloads\ghidra.zip' -Us
 Expand-Archive -Path $env:USERPROFILE'\Downloads\ghidra.zip' -DestinationPath $env:USERPROFILE'\Documents\ghidra'
 Remove-Item $env:USERPROFILE'\Downloads\ghidra.zip'
 
+Write-Output "Installing winchecksec"
 
 $URL = "https://api.github.com/repos/trailofbits/winchecksec/releases/latest"
 $URL = (Invoke-WebRequest -UseBasicParsing -Uri $URL).Content | ConvertFrom-Json |
@@ -132,11 +140,14 @@ Invoke-WebRequest -Uri $URL -OutFile $env:USERPROFILE'\Downloads\winchecksec.zip
 Expand-Archive -Path $env:USERPROFILE'\Downloads\winchecksec.zip' -DestinationPath $env:USERPROFILE'\Documents\winchecksec'
 Remove-Item $env:USERPROFILE'\Downloads\winchecksec.zip'
 
+Write-Output "Installing regshot"
 
 $URL = 'https://sourceforge.net/projects/regshot/files/latest/download'
 Invoke-WebRequest -UseBasicParsing -UserAgent [Microsoft.PowerShell.Commands.PSUserAgent]::FireFox -Uri $URL -OutFile $env:USERPROFILE'\Downloads\regshot.zip'
 Expand-Archive -Path $env:USERPROFILE'\Downloads\regshot.zip' -DestinationPath $env:USERPROFILE'\Documents\regshot'
 Remove-Item $env:USERPROFILE'\Downloads\regshot.zip'
+
+Write-Output "Installing MSYS2"
 
 $URL = 'https://repo.msys2.org/distrib/msys2-x86_64-latest.exe'
 Invoke-WebRequest -UseBasicParsing -UserAgent [Microsoft.PowerShell.Commands.PSUserAgent]::FireFox -Uri $URL -OutFile $env:USERPROFILE'\Downloads\msys2-x86_64-latest.exe'
