@@ -26,7 +26,7 @@ function Test-CommandExists {
 	Param ($command)
 
 	$oldPreference = $ErrorActionPreference
-	$ErrorActionPreference = ‘stop’
+	$ErrorActionPreference = 'stop'
 	try {if(Get-Command $command){ $true }}
 	Catch { $false }
 	Finally {$ErrorActionPreference=$oldPreference}
@@ -44,7 +44,7 @@ $ProgressPreference = 'SilentlyContinue'
 
 # Check if winget is already installed (possible for newer versions of windows)
 
-if(Test-CommandExists "winget") {
+if( -not (Test-CommandExists "winget") ) {
 	# 
 	# Dependencies
 	#
