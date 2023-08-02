@@ -102,6 +102,7 @@ Install-Program -ProgramName ojdkbuild.ojdkbuild
 Install-Program -ProgramName ojdkbuild.openjdk.11.jdk
 Install-Program -ProgramName Notepad++.Notepad++
 Install-Program -ProgramName WiresharkFoundation.Wireshark
+Install-Program -ProgramName Microsoft.VisualStudio.2022.Community
 
 
 Write-Output "Installing MSStore Packages"
