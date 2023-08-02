@@ -36,7 +36,7 @@ ren C:\Windows\System32\amsi.dll amsi_legit.dll
 Write-Output "Schedule move file to system folder"
 movefile /nobanner $env:USERPROFILE'\Downloads\amsi.dll' C:\Windows\System32\amsi.dll
 
-Write-Output "Creating file to disable amsi '$null > C:\.disableamsi'"
+Write-Output "Creating file to disable amsi '`$null > C:\.disableamsi'"
 Write-Output "Delete this file to enable amsi again"
 $null > C:\.disableamsi
 
